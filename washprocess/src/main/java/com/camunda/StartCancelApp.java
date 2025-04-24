@@ -43,6 +43,19 @@ public class StartCancelApp {
 	  			
 	  			break;
 				
+			case "move":
+				
+				client.newWorker()
+				.jobType("taskWash")
+				.handler((c, job)-> {
+					System.out.println("taskWash moving " + job.getKey() + " ...");
+					c.newCompleteCommand(job.getKey()).send().join();
+				})
+				.timeout(Duration.ofSeconds(10))
+				.open();
+				
+				break;
+	  			
 			default:
 				break ZEEBE;
 			}
