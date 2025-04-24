@@ -1,5 +1,6 @@
 package com.camunda;
 
+import java.time.Duration;
 import java.util.Scanner;
 
 import io.camunda.client.CamundaClient;
@@ -20,17 +21,14 @@ public class StartCancelApp {
 				
 				System.out.println("Start zeebe instance ...");
 				// Create a process 
-				client.newCreateInstanceCommand()
+				processInstanceKey = client.newCreateInstanceCommand()
 	  				.bpmnProcessId("Process_Wash")
 	 	 	        .latestVersion()
+	 	 	        .requestTimeout(Duration.ofMinutes(1))
 	 	 	        // .withResult() // avoid using for long running process
 	 	 	        .send()
-	 	 	        .whenComplete((result, exception)->{
-	 	 	        	if(exception != null) {}
-	 	 	        	else {
-	 	 	        		processInstanceKey = result.getProcessInstanceKey();
-	 	 	        	}
-	 	 	        });
+	 	 	        .join()
+	 	 	        .getProcessInstanceKey();
 				
 				break;
 				
