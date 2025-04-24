@@ -34,7 +34,12 @@ public class App {
 			// Request the Cluster Topology
 			System.out.println("Connected to: " + client.newTopologyRequest().send().join() + "\n" + client.getConfiguration().toString());
 			
-			
+			// Create a process 
+ 			client.newCreateInstanceCommand()
+ 				.bpmnProcessId("Process_Wash")
+	 	        .latestVersion()
+	 	        .send()
+	 	        .join();
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
