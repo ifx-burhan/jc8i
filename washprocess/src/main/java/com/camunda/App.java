@@ -34,10 +34,8 @@ public class App {
 			// Request the Cluster Topology
 			System.out.println("Connected to: " + client.newTopologyRequest().send().join() + "\n" + client.getConfiguration().toString());
 			
-			// Cancel a process 
- 			client.newCancelInstanceCommand(4503599627371229L)
-	 	        .send()
-	 	        .join();
+			// Start and cancel a process 
+			StartCancelApp.run(client);
 			
 		} catch (Exception e) {
 		    e.printStackTrace();

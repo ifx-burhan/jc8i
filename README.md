@@ -1,7 +1,7 @@
 # Camunda 8 SaaS
 
-## Cancel a process
+## Start and cancel a process
 
-Simple implementation to cancel a process. \
+Simple implementation to start and cancel a process. \
 Configurations properties in `application.properties` file.\
 Dependencies in `pom.xml`.
