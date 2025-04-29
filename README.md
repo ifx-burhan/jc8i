@@ -1,7 +1,7 @@
 # Camunda 8 SaaS
 
-## job worker
+## Inbound Connector Start Event
 
-Simple implementation of job worker. \
+Simple implementation of Inbound Connector Start Event. \
 Configurations properties in `application.properties` file.\
 Dependencies in `pom.xml`.
